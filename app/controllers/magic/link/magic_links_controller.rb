@@ -1,6 +1,7 @@
 module Magic
   module Link
     class MagicLinksController < ::ApplicationController
+      skip_authorization_check
       before_action :check_user, only: :new
 
       def new
