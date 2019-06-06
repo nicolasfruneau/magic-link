@@ -5,10 +5,12 @@ module Magic
       before_action :check_user, only: :new
 
       def new
+        Rails.logger.error '------------------- NEW --------------------------'
         @magic_link = MagicLink.new
       end
 
       def create
+        Rails.logger.error '------------------- CREATE --------------------------'
         @magic_link = MagicLink.new(permitted_params)
         @magic_link.send_login_instructions
         redirect_to main_app.root_path, notice: "Check your email for a sign in link!"
